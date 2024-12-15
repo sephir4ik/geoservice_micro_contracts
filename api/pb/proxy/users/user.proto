@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package users_service_contracts;
+
+option go_package="geoservice_micro_contracts/users_service_contracts";
+
+message CreateUserRequest{
+  string login = 1;
+  string password = 2;
+}
+
+message CreateUserResponse{
+}
+
+message GetUserRequest{
+  string login = 1;
+}
+
+message GetUserResponse{
+  uint64 id = 1;
+  string login = 2;
+  string password = 3;
+}
+
+message User{
+  uint64 id = 1;
+  string login = 2;
+  string name =3;
+  string mail =4;
+}
+
+message UsersListRequest{
+  uint64 offset = 1;
+  uint64 limit = 2;
+}
+
+message UsersListResponse{
+  repeated User users = 1;
+}
+
+message UserProfileRequest{
+  uint64 id =1;
+}
+
+message UserProfileResponse{
+  User user = 1;
+}
+
+service UsersManager{
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+  rpc GetUser(GetUserRequest) returns (GetUserResponse);
+  rpc UserProfile(UserProfileRequest) returns (UserProfileResponse);
+  rpc GetUsersByFilter(UsersListRequest) returns (UsersListResponse);
+}

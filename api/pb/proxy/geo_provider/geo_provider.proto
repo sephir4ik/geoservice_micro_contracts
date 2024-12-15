@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package geoprovider_contracts;
+
+option go_package="geoservice_micro_contracts/geo_provider_contracts";
+
+message Address{
+  string City=1;
+  string Street=2;
+  string House=3;
+  string Lan=4;
+  string Lon=5;
+}
+
+message GeocodeRequest {
+  string Lat = 1;
+  string Lon=2;
+}
+
+message GeocodeResponse {
+  repeated Address Addresses =1;
+}
+
+message SearchAddressesRequest {
+  string query = 1;
+}
+
+message SearchAddressesResponse {
+  repeated Address Addresses =1;
+}
+
+service GeoProvider{
+  rpc Geocode(GeocodeRequest) returns (GeocodeResponse){}
+  rpc SearchAddresses(SearchAddressesRequest) returns (SearchAddressesResponse){}
+}
+
+
+
+
