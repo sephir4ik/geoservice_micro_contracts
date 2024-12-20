@@ -7,6 +7,8 @@ option go_package="geoservice_micro_contracts/users_service_contracts";
 message CreateUserRequest{
   string login = 1;
   string password = 2;
+  string name = 3;
+  string mail = 4;
 }
 
 message CreateUserResponse{
@@ -22,7 +24,7 @@ message GetUserResponse{
   string password = 3;
 }
 
-message User{
+message UserProfile{
   uint64 id = 1;
   string login = 2;
   string name =3;
@@ -35,7 +37,7 @@ message UsersListRequest{
 }
 
 message UsersListResponse{
-  repeated User users = 1;
+  repeated UserProfile users = 1;
 }
 
 message UserProfileRequest{
@@ -43,7 +45,7 @@ message UserProfileRequest{
 }
 
 message UserProfileResponse{
-  User user = 1;
+  UserProfile user = 1;
 }
 
 service UsersManager{

@@ -4,7 +4,7 @@
 // - protoc             v3.12.4
 // source: api/pb/proxy/users/user.proto
 
-package user_service_contracts
+package users_service_contracts
 
 import (
 	context "context"
