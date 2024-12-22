@@ -32,8 +32,10 @@ message UserProfile{
 }
 
 message UsersListRequest{
-  uint64 offset = 1;
-  uint64 limit = 2;
+  repeated uint64 id= 1;
+  repeated string login=2;
+  uint64 offset = 3;
+  uint64 limit = 4;
 }
 
 message UsersListResponse{
