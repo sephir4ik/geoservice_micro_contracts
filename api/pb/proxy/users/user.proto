@@ -5,21 +5,13 @@ package users_service_contracts;
 option go_package="geoservice_micro_contracts/users_service_contracts";
 
 message CreateUserRequest{
-  string login = 1;
+  uint64 id=1;
+  string login = 2;
   string name = 3;
   string mail = 4;
 }
 
 message CreateUserResponse{
-}
-
-message GetUserRequest{
-  string login = 1;
-}
-
-message GetUserResponse{
-  uint64 id = 1;
-  string login = 2;
 }
 
 message UserProfile{
@@ -50,7 +42,6 @@ message UserProfileResponse{
 
 service UsersManager{
   rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
-  rpc GetUser(GetUserRequest) returns (GetUserResponse);
   rpc UserProfile(UserProfileRequest) returns (UserProfileResponse);
   rpc GetUsersByFilter(UsersListRequest) returns (UsersListResponse);
 }

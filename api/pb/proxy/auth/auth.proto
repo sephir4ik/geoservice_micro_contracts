@@ -4,17 +4,13 @@ package auth_contracts;
 
 option go_package="geoservice_micro_contracts/proxy/auth_contracts";
 
-message AuthData{
-  string login = 1;
-  string password = 2;
-}
-
 message RegisterRequest{
   string login = 1;
   string password = 2;
 }
 
 message RegisterResponse{
+  uint64 id=1;
 }
 
 message LoginRequest{
@@ -26,7 +22,18 @@ message LoginResponse{
   string token = 1;
   string refreshToken= 2;
 }
+
+message IsValidTokenRequest{
+  string token=1;
+  string refreshToken=2;
+}
+
+message IsValidTokenResponse{
+  uint64 id=1;
+}
+
 service AuthService{
   rpc Register(RegisterRequest) returns(RegisterResponse);
   rpc Login(LoginRequest) returns(LoginResponse);
+  rpc IsValidToken(IsValidTokenRequest) returns(IsValidTokenResponse);
 }
